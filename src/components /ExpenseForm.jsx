@@ -41,7 +41,7 @@ class ExpenseForm extends Component {
         </label>
         <select name="paymentMethod" id="payment" data-testid="method-input">
           <option value="Dinheiro">Dinheiro</option>
-          <option value="Cartão de crédito">Cartão de cqrédito</option>
+          <option value="Cartão de crédito">Cartão de crédito</option>
           <option value="Cartão de débito">Cartão de débito</option>
         </select>
         <select name="tag" id="tag" data-testid="tag-input">
