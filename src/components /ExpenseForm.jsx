@@ -6,11 +6,11 @@ class ExpenseForm extends Component {
   constructor() {
     super();
     this.state = {
-      expenseValue: '',
-      description: '',
-      currency: '',
-      paymentMethod: '',
-      tag: '',
+      // expenseValue: '',
+      // description: '',
+      // currency: '',
+      // paymentMethod: '',
+      // tag: '',
     };
   }
 
