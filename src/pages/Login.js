@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import connect from 'react-redux/lib/connect/connect';
-import { login } from '../actions';
 import PropTypes from 'prop-types';
+import { login } from '../actions';
 
 class Login extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class Login extends Component {
     };
   }
 
-  handleChange = ({ target: { name, value} }) => {
+  handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value }, this.validation);
   }
 

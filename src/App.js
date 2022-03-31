@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { Route } from 'react-router-dom';
 import Login from './pages/Login';
