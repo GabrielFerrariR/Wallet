@@ -44,7 +44,7 @@ class ExpenseForm extends Component {
     return (
       <section>
         <input
-          type="text"
+          type="number"
           data-testid="value-input"
           name="value"
           value={ value }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/lib/connect/connect';
 import { fetchCurrencies } from '../actions';
 import ExpenseForm from '../components /ExpenseForm';
+import ExpenseTable from '../components /ExpenseTable';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const { userEmail } = this.props;
+    const { userEmail, expenses } = this.props;
     return (
       <div>
         <header>
@@ -47,16 +48,8 @@ class Wallet extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-            </tr>
-            <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-            </tr>
+            { expenses.map((expense) => (
+              <ExpenseTable key={ expense.id } expense={ expense } />))}
           </tbody>
         </table>
       </div>
