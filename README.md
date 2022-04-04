@@ -11,7 +11,13 @@ Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora
 Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
 
 ---
-
+<button
+            type="button"
+            data-testid="delete-btn"
+            onClick={ this.onDeleteButtonClick }
+          >
+            Excluir
+          </button>
 # Sumário
 
 - [Boas vindas ao repositório do projeto Trybe Wallet!](#boas-vindas-ao-repositório-do-projeto-trybe-wallet)

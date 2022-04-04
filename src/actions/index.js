@@ -3,6 +3,19 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const CURRENCY_LIST = 'CURRENCY_LIST';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const TOGGLE_ADD_EDIT = 'TOGGLE_ADD_EDIT';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+
+export const toggle = (payload = {}) => ({
+  type: TOGGLE_ADD_EDIT,
+  payload,
+});
+
+export const editExpense = (payload, expenseToEdit) => ({
+  type: EDIT_EXPENSE,
+  payload,
+  expenseToEdit,
+});
 
 export const login = (email, password) => ({
   type: USER_LOGIN,

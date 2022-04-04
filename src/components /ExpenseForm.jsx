@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/lib/connect/connect';
-import { fetchAndAddExpense } from '../actions';
+import { fetchAndAddExpense, editExpense, toggle } from '../actions';
 import ExpenseTable from './ExpenseTable';
 
 const alimentacao = 'Alimentação';
@@ -39,8 +39,16 @@ class ExpenseForm extends Component {
     this.setState(defaultState);
   }
 
+  onExpenseEdit = () => {
+    const { editDispatch, expenseToEdit, toggleToAdd } = this.props;
+
+    editDispatch(this.state, expenseToEdit);
+    this.setState(defaultState);
+    toggleToAdd();
+  }
+
   render() {
-    const { currencyList, expenses } = this.props;
+    const { currencyList, expenses, isEditing } = this.props;
     const { value, description } = this.state;
     return (
       <section>
@@ -60,7 +68,12 @@ class ExpenseForm extends Component {
         />
         <label htmlFor="currency">
           Moeda
-          <select name="currency" id="currency" onChange={ this.handleChange }>
+          <select
+            name="currency"
+            id="currency"
+            onChange={ this.handleChange }
+            data-testid="currency-input"
+          >
             { currencyList.map((curr) => (
               <option key={ curr } value={ curr }>
                 {curr}
@@ -91,9 +104,9 @@ class ExpenseForm extends Component {
         </select>
         <button
           type="button"
-          onClick={ this.onSubmitClick }
+          onClick={ isEditing ? this.onSubmitClick : this.onExpenseEdit }
         >
-          Adicionar despesa
+          { isEditing ? 'Adicionar despesa' : 'Editar despesa'}
         </button>
         <table style={ { width: '100%' } }>
           <thead>
@@ -125,10 +138,14 @@ class ExpenseForm extends Component {
 const mapStateToProps = (state) => ({
   currencyList: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  isEditing: state.edit.toggleAdd,
+  expenseToEdit: state.edit.expenseToEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   expenseDispatch: (payload) => dispatch(fetchAndAddExpense(payload)),
+  editDispatch: (payload, expenseToEdit) => dispatch(editExpense(payload, expenseToEdit)),
+  toggleToAdd: () => dispatch(toggle()),
 });
 
 ExpenseForm.propTypes = {

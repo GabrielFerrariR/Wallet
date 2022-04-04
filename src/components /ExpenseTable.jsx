@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/lib/connect/connect';
-import { removeExpense } from '../actions';
+import { removeExpense, toggle } from '../actions';
 
 class ExpenseTable extends Component {
   onDeleteButtonClick = () => {
@@ -10,7 +10,8 @@ class ExpenseTable extends Component {
   }
 
   onEditButtonClick = () => {
-
+    const { expense, toggleToEdit } = this.props;
+    toggleToEdit(expense);
   }
 
   render() {
@@ -30,17 +31,17 @@ class ExpenseTable extends Component {
         <td>
           <button
             type="button"
+            data-testid="edit-btn"
+            onClick={ this.onEditButtonClick }
+          >
+            Editar
+          </button>
+          <button
+            type="button"
             data-testid="delete-btn"
             onClick={ this.onDeleteButtonClick }
           >
             Excluir
-          </button>
-          <button
-            type="button"
-            data-testid="edit-btn"
-            onClick={ this.onEditButtonClick }
-          >
-            Editar despesa
           </button>
         </td>
       </tr>
@@ -57,6 +58,7 @@ ExpenseTable.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   deleteLine: (expense) => dispatch(removeExpense(expense)),
+  toggleToEdit: (expense) => dispatch(toggle(expense)),
 });
 
 export default connect(null, mapDispatchToProps)(ExpenseTable);
