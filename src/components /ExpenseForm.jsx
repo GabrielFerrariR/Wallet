@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/lib/connect/connect';
 import { fetchAndAddExpense } from '../actions';
+import ExpenseTable from './ExpenseTable';
 
 const alimentacao = 'Alimentação';
 const defaultState = {
@@ -39,7 +40,7 @@ class ExpenseForm extends Component {
   }
 
   render() {
-    const { currencyList } = this.props;
+    const { currencyList, expenses } = this.props;
     const { value, description } = this.state;
     return (
       <section>
@@ -94,12 +95,36 @@ class ExpenseForm extends Component {
         >
           Adicionar despesa
         </button>
+        <table style={ { width: '100%' } }>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Câmbio utilizado</th>
+              <th>Valor convertido</th>
+              <th>Moeda de conversão</th>
+              <th>Editar/Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            { (expenses) && expenses.map((expense) => (
+              <ExpenseTable
+                key={ expense.id }
+                expense={ expense }
+              />))}
+          </tbody>
+        </table>
       </section>
+
     );
   }
 }
 const mapStateToProps = (state) => ({
   currencyList: state.wallet.currencies,
+  expenses: state.wallet.expenses,
 });
 
 const mapDispatchToProps = (dispatch) => ({

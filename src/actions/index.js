@@ -2,6 +2,7 @@
 export const USER_LOGIN = 'USER_LOGIN';
 export const CURRENCY_LIST = 'CURRENCY_LIST';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const login = (email, password) => ({
   type: USER_LOGIN,
@@ -23,6 +24,11 @@ export function fetchCurrencies() {
 
 export const addExpense = (expense) => ({
   type: ADD_EXPENSE,
+  expense,
+});
+
+export const removeExpense = (expense) => ({
+  type: REMOVE_EXPENSE,
   expense,
 });
 

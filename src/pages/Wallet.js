@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/lib/connect/connect';
 import { fetchCurrencies } from '../actions';
 import ExpenseForm from '../components /ExpenseForm';
-import ExpenseTable from '../components /ExpenseTable';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -13,13 +12,16 @@ class Wallet extends React.Component {
 
   expensesSum = () => {
     const { expenses } = this.props;
-    return (expenses
-      .map((expense) => expense.exchangeRates[expense.currency].ask * expense.value)
-      .reduce((acc, value) => acc + value, 0)).toFixed(2);
+    if (expenses) {
+      return (expenses
+        .map((expense) => expense.exchangeRates[expense.currency].ask * expense.value)
+        .reduce((acc, value) => acc + value, 0)).toFixed(2);
+    }
+    return 0;
   }
 
   render() {
-    const { userEmail, expenses } = this.props;
+    const { userEmail } = this.props;
     return (
       <div>
         <header>
@@ -33,25 +35,6 @@ class Wallet extends React.Component {
           <span data-testid="header-currency-field">BRL</span>
         </header>
         <ExpenseForm />
-        <table style={ { width: '100%' } }>
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-            { expenses.map((expense) => (
-              <ExpenseTable key={ expense.id } expense={ expense } />))}
-          </tbody>
-        </table>
       </div>
     );
   }

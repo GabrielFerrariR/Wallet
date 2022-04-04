@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import connect from 'react-redux/lib/connect/connect';
+import { removeExpense } from '../actions';
 
 class ExpenseTable extends Component {
+  onDeleteButtonClick = () => {
+    const { expense, deleteLine } = this.props;
+    deleteLine(expense);
+  }
+
+  onEditButtonClick = () => {
+
+  }
+
   render() {
     const { expense } = this.props;
     const { description, tag, method, value, exchangeRates, currency } = expense;
@@ -16,7 +27,22 @@ class ExpenseTable extends Component {
         <td>{ Number(ask).toFixed(2) }</td>
         <td>{ (ask * value).toFixed(2) }</td>
         <td>Real</td>
-        <td>editar</td>
+        <td>
+          <button
+            type="button"
+            data-testid="delete-btn"
+            onClick={ this.onDeleteButtonClick }
+          >
+            Excluir
+          </button>
+          <button
+            type="button"
+            data-testid="edit-btn"
+            onClick={ this.onEditButtonClick }
+          >
+            Editar despesa
+          </button>
+        </td>
       </tr>
     );
   }
@@ -28,4 +54,9 @@ ExpenseTable.propTypes = {
     description: PropTypes.string,
   }),
 }.isRequired;
-export default ExpenseTable;
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteLine: (expense) => dispatch(removeExpense(expense)),
+});
+
+export default connect(null, mapDispatchToProps)(ExpenseTable);
