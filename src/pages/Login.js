@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import connect from 'react-redux/lib/connect/connect';
 import PropTypes from 'prop-types';
 import { login } from '../actions';
+import '../App.css';
 
 class Login extends Component {
   constructor() {
@@ -37,7 +38,7 @@ class Login extends Component {
   render() {
     const { email, password, isSubmitBtnDisabled } = this.state;
     return (
-      <div>
+      <div className="input-group mb-3 bg-primary">
         <input
           type="text"
           data-testid="email-input"
@@ -54,6 +55,7 @@ class Login extends Component {
         />
         <button
           type="button"
+          className="btn btn-primary"
           disabled={ isSubmitBtnDisabled }
           onClick={ this.onLoginBtnClick }
         >
