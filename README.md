@@ -1,8 +1,9 @@
-# Trybe Wallet
+<h1 align="center">Trybe Wallet</h1>
 
+![Aplication](application.png)
 # Sobre
 
-Neste projeto, o usuário pode adicionar despesas em uma planilha de gastos, podendo editar, excluir e converter os valores da despesa em diversas moedas e criptomoedas. 
+Neste projeto, o usuário pode adicionar despesas em uma planilha de gastos, podendo editar, excluir e converter os valores da despesa em diversas moedas e criptomoedas. Além disso ele deve efetuar um login com um email válido e senha.
 
 
 ## Tecnologias usadas

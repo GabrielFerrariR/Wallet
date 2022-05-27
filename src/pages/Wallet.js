@@ -33,11 +33,11 @@ class Wallet extends React.Component {
               { userEmail }
             </h4>
           </div>
-          <div className="d-flex">
-            <h5 data-testid="total-field">
+          <div className="d-flex me-3">
+            <h4 data-testid="total-field">
               { this.expensesSum() }
-            </h5>
-            <h5 data-testid="header-currency-field">BRL</h5>
+            </h4>
+            <h4 data-testid="header-currency-field">BRL</h4>
           </div>
         </header>
         <ExpenseForm />

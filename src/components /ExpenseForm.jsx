@@ -53,8 +53,8 @@ class ExpenseForm extends Component {
     const { value, description } = this.state;
     return (
       <section>
-        <div className="d-flex justify-content-evenly">
-          <div className="input-group mb-3">
+        <div className="d-flex ">
+          <div className="input-group mb-3 me-2">
             <span className="input-group-text">$</span>
             <input
               className="form-control"
@@ -66,7 +66,7 @@ class ExpenseForm extends Component {
               onChange={ this.handleChange }
             />
           </div>
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 me-2">
             <input
               type="text"
               className="form-control"
@@ -77,14 +77,14 @@ class ExpenseForm extends Component {
               onChange={ this.handleChange }
             />
           </div>
-          <div className="input-group mb-3">
-            <span>
+          <div className="input-group mb-3 me-2">
+            <span className="me-2 text-center pt-2">
               Moeda
             </span>
             <select
               name="currency"
               id={ currency }
-              className="form-select-sm"
+              className="form-select"
               onChange={ this.handleChange }
               data-testid="currency-input"
             >
@@ -94,11 +94,11 @@ class ExpenseForm extends Component {
                 </option>))}
             </select>
           </div>
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 me-2">
             <select
               name="method"
               id="payment"
-              className="form-select-sm"
+              className="form-select"
               data-testid="method-input"
               onChange={ this.handleChange }
             >
@@ -107,12 +107,12 @@ class ExpenseForm extends Component {
               <option value="Cartão de débito">Cartão de débito</option>
             </select>
           </div>
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 me-2">
             <select
               name="tag"
               id="tag"
               data-testid="tag-input"
-              className="form=select"
+              className="form-select"
               onChange={ this.handleChange }
             >
               <option value="Alimentação ">Alimentação</option>
@@ -122,13 +122,15 @@ class ExpenseForm extends Component {
               <option value="Saúde">Saúde</option>
             </select>
           </div>
-          <button
-            type="button"
-            onClick={ isEditing ? this.onSubmitClick : this.onExpenseEdit }
-            className={ isEditing ? 'btn btn-info' : 'btn btn-warning' }
-          >
-            { isEditing ? 'Adicionar despesa' : 'Editar despesa'}
-          </button>
+          <div className="me-4">
+            <button
+              type="button"
+              onClick={ isEditing ? this.onSubmitClick : this.onExpenseEdit }
+              className={ isEditing ? 'btn btn-info' : 'btn btn-warning' }
+            >
+              { isEditing ? 'Adicionar despesa' : 'Editar despesa'}
+            </button>
+          </div>
         </div>
         <table style={ { width: '100%' } } className="table table-warning table-striped">
           <thead>
