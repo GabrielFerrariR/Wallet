@@ -32,6 +32,7 @@ class ExpenseTable extends Component {
           <button
             type="button"
             data-testid="edit-btn"
+            className="btn btn-warning"
             onClick={ this.onEditButtonClick }
           >
             Editar
@@ -39,6 +40,7 @@ class ExpenseTable extends Component {
           <button
             type="button"
             data-testid="delete-btn"
+            className="btn btn-danger"
             onClick={ this.onDeleteButtonClick }
           >
             Excluir

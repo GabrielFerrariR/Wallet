@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import connect from 'react-redux/lib/connect/connect';
 import PropTypes from 'prop-types';
 import { login } from '../actions';
-import '../App.css';
+import 'bootstrap';
 
 class Login extends Component {
   constructor() {
@@ -38,15 +38,21 @@ class Login extends Component {
   render() {
     const { email, password, isSubmitBtnDisabled } = this.state;
     return (
-      <div className="input-group mb-3 bg-primary">
+      <div
+        className="input-group flex-column container
+        position-absolute top-50 start-50 translate-middle w-25 "
+      >
+        <h1 className="align-self-center">Trybe Wallet</h1>
         <input
           type="text"
           data-testid="email-input"
           name="email"
           value={ email }
           onChange={ this.handleChange }
+          className="mb-2"
         />
         <input
+          className="mb-2"
           type="password"
           data-testid="password-input"
           name="password"
@@ -55,7 +61,7 @@ class Login extends Component {
         />
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-warning"
           disabled={ isSubmitBtnDisabled }
           onClick={ this.onLoginBtnClick }
         >

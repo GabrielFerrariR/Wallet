@@ -4,6 +4,7 @@ import connect from 'react-redux/lib/connect/connect';
 import { fetchAndAddExpense, editExpense, toggle } from '../actions';
 import ExpenseTable from './ExpenseTable';
 
+const currency = 'currency';
 const alimentacao = 'Alimentação';
 const defaultState = {
   value: '',
@@ -52,63 +53,84 @@ class ExpenseForm extends Component {
     const { value, description } = this.state;
     return (
       <section>
-        <input
-          type="number"
-          data-testid="value-input"
-          name="value"
-          value={ value }
-          onChange={ this.handleChange }
-        />
-        <input
-          type="text"
-          data-testid="description-input"
-          name="description"
-          value={ description }
-          onChange={ this.handleChange }
-        />
-        <label htmlFor="currency">
-          Moeda
-          <select
-            name="currency"
-            id="currency"
-            onChange={ this.handleChange }
-            data-testid="currency-input"
+        <div className="d-flex justify-content-evenly">
+          <div className="input-group mb-3">
+            <span className="input-group-text">$</span>
+            <input
+              className="form-control"
+              type="number"
+              data-testid="value-input"
+              name="value"
+              value={ value }
+              placeholder="Valor"
+              onChange={ this.handleChange }
+            />
+          </div>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              data-testid="description-input"
+              name="description"
+              placeholder="Descrição da despesa"
+              value={ description }
+              onChange={ this.handleChange }
+            />
+          </div>
+          <div className="input-group mb-3">
+            <span>
+              Moeda
+            </span>
+            <select
+              name="currency"
+              id={ currency }
+              className="form-select-sm"
+              onChange={ this.handleChange }
+              data-testid="currency-input"
+            >
+              { currencyList.map((curr) => (
+                <option key={ curr } value={ curr }>
+                  {curr}
+                </option>))}
+            </select>
+          </div>
+          <div className="input-group mb-3">
+            <select
+              name="method"
+              id="payment"
+              className="form-select-sm"
+              data-testid="method-input"
+              onChange={ this.handleChange }
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+          </div>
+          <div className="input-group mb-3">
+            <select
+              name="tag"
+              id="tag"
+              data-testid="tag-input"
+              className="form=select"
+              onChange={ this.handleChange }
+            >
+              <option value="Alimentação ">Alimentação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            onClick={ isEditing ? this.onSubmitClick : this.onExpenseEdit }
+            className={ isEditing ? 'btn btn-info' : 'btn btn-warning' }
           >
-            { currencyList.map((curr) => (
-              <option key={ curr } value={ curr }>
-                {curr}
-              </option>))}
-          </select>
-        </label>
-        <select
-          name="method"
-          id="payment"
-          data-testid="method-input"
-          onChange={ this.handleChange }
-        >
-          <option value="Dinheiro">Dinheiro</option>
-          <option value="Cartão de crédito">Cartão de crédito</option>
-          <option value="Cartão de débito">Cartão de débito</option>
-        </select>
-        <select
-          name="tag"
-          id="tag"
-          data-testid="tag-input"
-          onChange={ this.handleChange }
-        >
-          <option value="Alimentação ">Alimentação</option>
-          <option value="Lazer">Lazer</option>
-          <option value="Trabalho">Trabalho</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Saúde">Saúde</option>
-        </select>
-        <button
-          type="button"
-          onClick={ isEditing ? this.onSubmitClick : this.onExpenseEdit }
-        >
-          { isEditing ? 'Adicionar despesa' : 'Editar despesa'}
-        </button>
-        <table style={ { width: '100%' } }>
+            { isEditing ? 'Adicionar despesa' : 'Editar despesa'}
+          </button>
+        </div>
+        <table style={ { width: '100%' } } className="table table-warning table-striped">
           <thead>
             <tr>
               <th>Descrição</th>
