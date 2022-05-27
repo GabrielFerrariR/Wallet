@@ -8,18 +8,24 @@ Neste projeto, o usuário pode adicionar despesas em uma planilha de gastos, pod
 ## Tecnologias usadas
 
 Front-end:
-> Desenvolvido usando: React com componentes de classe, Redux, CSS3, HTML5, ES6, consumo de API, Bootstrap
+> Desenvolvido usando: 
+> * React com componentes de classe;
+> * Redux para gerenciamento de estado;
+> * Estilização utilizando somente Bootstrap;
+> * HTML5, ES6, 
+> * Consumo de API de conversão de moedas.
 
 
 ## Instalando Dependências
 
-> Frontend
 ```bash
+git clone git@github.com:GabrielFerrariR/Wallet.git
+cd Wallet
 npm install
 ``` 
 ## Executando aplicação
 
-* Para rodar o front-end:
+Para rodar o front-end:
 
   ```
 npm start
