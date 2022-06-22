@@ -3,7 +3,7 @@
 ![Aplication](application.png)
 # Sobre
 
-Acesse a aplicação : [walletgfr.netlify.app](walletgfr.netlify.app)
+Acesse a [aplicação](https://walletgfr.netlify.app)
 
 Neste projeto, o usuário pode adicionar despesas em uma planilha de gastos, podendo editar, excluir e converter os valores da despesa em diversas moedas e criptomoedas. Além disso ele deve efetuar um login com um email válido e senha.
 
